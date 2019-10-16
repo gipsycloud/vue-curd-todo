@@ -14,7 +14,7 @@
 		props: ["todo"],
 		methods: {
 			markComplete() {
-				console.log(123)
+				// console.log(123)
 				this.todo.completed = !this.todo.completed;
 			}
 		}
