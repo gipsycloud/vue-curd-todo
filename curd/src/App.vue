@@ -1,55 +1,12 @@
 <template>
   <div id="app">
-    <!-- <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    <!-- {{ msg }} -->
-    <Header />
-    <AddTodo v-on:add-todo="addTodo" />
-    <Todos v-bind:todos="todos" v-on:del-todo="deleteTodo"/>
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </div>
+    <router-view/>
   </div>
 </template>
-
-<script>
-// import HelloWorld from './components/HelloWorld.vue'
-  import Header from './components/layout/Header';
-  import Todos from './components/Todos';
-  import AddTodo from './components/AddTodo';
-  import axios from 'axios';
-  
-export default {
-  name: 'app',
-  components: {
-    Header, Todos, AddTodo
-  },
-  data() {
-    return {
-      msg: 'Hello',
-      todos: []
-    }
-  },
-  methods: {
-    deleteTodo(id) {https://jsonplaceholder.typicode.com/todos
-      axios.delete('https://jsonplaceholder.typicode.com/todos/${id}')
-        .then(res => this.todos = this.todos.filter(todo => todo.id !== id))
-        .catch(err => console.log(err));
-    },
-    addTodo(newTodo){
-      const { title, completed } = newTodo;
-      axios.post('https://jsonplaceholder.typicode.com/todos', {
-        title,
-        completed
-      })
-        .then(res => this.todos = [...this.todos, newTodo] )
-        .catch(err => console.log(err));
-    }
-  },
-  created() {
-    axios.get('https://jsonplaceholder.typicode.com/todos?_limit=10')
-    .then(res => this.todos = res.data)
-    .catch(err => console.log(err));
-  }
-}
-</script>
   
 <style>
   * {
