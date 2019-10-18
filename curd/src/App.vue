@@ -1,56 +1,18 @@
 <template>
   <div id="app">
-    <!-- <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    <!-- {{ msg }} -->
     <Header />
-    <AddTodo v-on:add-todo="addTodo" />
-    <Todos v-bind:todos="todos" v-on:del-todo="deleteTodo"/>
+    <router-view/>
   </div>
 </template>
 
-<script>
-// import HelloWorld from './components/HelloWorld.vue'
-  import Header from './components/layout/Header';
-  import Todos from './components/Todos';
-  import AddTodo from './components/AddTodo';
-  
-export default {
-  name: 'app',
-  components: {
-    Header, Todos, AddTodo
-  },
-  data() {
-    return {
-      msg: 'Hello',
-      todos: [
-        {
-          id: 1,
-          title: "Todo One",
-          completed: false
-        },
-        {
-          id: 2,
-          title: "Todo Two",
-          completed: true
-        },
-        {
-          id: 3,
-          title: "Todo Three",
-          completed: false
-        }
-      ]
+<script type="text/javascript">
+import Header from './components/layout/Header';
+  export default {
+    name: "app",
+    components: {
+      Header
     }
-  },
-  methods: {
-    deleteTodo(id) {
-      this.todos = this.todos.filter(todo => todo.id !== id);
-    },
-    addTodo(newTodo){
-      this.todos = [...this.todos, newTodo];
-    }
-  } 
-}
+  }
 </script>
   
 <style>
